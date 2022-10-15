@@ -8,21 +8,41 @@ HOSTNAME=$(echo "$HOSTNAMECTL" | grep "hostname" | awk -F ':' '{ print $2 }' | x
 ICON_NAME=$(echo "$HOSTNAMECTL" | grep "Icon name" | awk -F ':' '{ print $2 }' | xargs)
 MACHINE_ID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }' | xargs)
 
-echo "$HOSTNAME"
-echo "$ICON_NAME"
-echo "$MACHINE_ID"
-
 # Pack hostnamectl values into JSON
 HOSTNAME_JSON=$(cat << EOF
 {
-  "hostname": "$HOSTNAME"
+  "hostname": "$HOSTNAME",
+  "icon_name": "$ICON_NAME",
+  "machine_id": "$MACHINE_ID"
 }
 EOF
 )
 
-echo "hostnamectl Loaded"
+echo "===+=== hostnamectl loaded ===+==="
+echo
 echo "$HOSTNAME_JSON"
+echo
 
-# Show shorten system information using `lshw` util
+# Get `lshw` in JSON format
+LSHW_JSON=$(lshw -json)
+
+echo "===+=== lshw loaded ===+==="
+echo
 lshw -short
+echo
 
+# Get `lscpu` CPU specs in JSON format
+LSCPU_JSON=$(lscpu -J)
+
+echo "===+=== lscpu loaded ===+==="
+echo
+lscpu
+echo
+
+# Get `lspci` PCI specs in JSON format
+LSPCI_JSON=$(lspci -J)
+
+echo "===+=== lspci loaded ===+==="
+echo
+lspci
+echo
