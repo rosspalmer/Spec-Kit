@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Use root privileges
-su
-
 # OUTPUT_LOCATION=$1
 
 HOSTNAMECTL=$(hostnamectl)
