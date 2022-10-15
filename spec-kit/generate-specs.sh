@@ -2,7 +2,8 @@
 
 # OUTPUT_LOCATION=$1
 
-HOSTNAMECTL=$(hostnamectl)
+# Get `hostnamectl` values and trim
+HOSTNAMECTL=$(hostnamectl | xargs)
 echo "$HOSTNAMECTL"
 
 # Use machine ID from hostnamectl as unique identifier
