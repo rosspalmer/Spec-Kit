@@ -56,7 +56,7 @@ OUTPUT_JSON=$(cat << EOF
 
   "lspci": "$LSPCI_JSON",
 
-  "lshw": "$lshw"
+  "lshw": "$LSHW_JSON"
 
 }
 EOF
