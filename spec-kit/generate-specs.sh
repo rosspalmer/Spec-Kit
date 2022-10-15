@@ -16,6 +16,7 @@ echo "machine_id -> $MACHINE_ID"
 echo
 
 # Get `lscpu` CPU specs in JSON format
+# TODO fix "fields/data" parsing problems
 LSCPU_JSON=$(lscpu -J)
 
 echo "===+=== lscpu loaded ===+==="
@@ -23,15 +24,8 @@ echo
 lscpu
 echo
 
-# Get `lspci` PCI specs in JSON format
-LSPCI_JSON=$(lspci -J)
-
-echo "===+=== lspci loaded ===+==="
-echo
-lspci
-echo
-
 # Get `lshw` in JSON format
+# FIXME remove outer list
 LSHW_JSON=$(lshw -json)
 
 echo "===+=== lshw loaded ===+==="
@@ -40,6 +34,7 @@ lshw -short
 echo
 
 # Get total memory using `free`
+CPU=$(lscpu | grep 'Model name' | awk -F ':' '{print $2}' | xargs)
 TOTAL_MEMORY=$(free | awk '{if (NR==2) print $2}')
 
 # Pack final json
@@ -49,12 +44,10 @@ OUTPUT_JSON=$(cat << EOF
   "hostname": "$HOSTNAME",
   "icon_name": "$ICON_NAME",
   "machine_id": "$MACHINE_ID",
-  "cpu": "TODO",
+  "cpu_model": "$CPU",
   "total_memory": "$TOTAL_MEMORY",
 
   "lscpu": "$LSCPU_JSON",
-
-  "lspci": "$LSPCI_JSON",
 
   "lshw": "$LSHW_JSON"
 
@@ -62,4 +55,8 @@ OUTPUT_JSON=$(cat << EOF
 EOF
 )
 
-echo "$OUTPUT_JSON" > "$OUTPUT_LOCATION/$MACHINE_ID.json"
+FILE_NAME="$OUTPUT_LOCATION/$MACHINE_ID"
+
+# Write json and html files
+echo "$OUTPUT_JSON" > "$FILE_NAME.json"
+lshw -html > "$FILE_NAME.html"
