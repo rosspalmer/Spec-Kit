@@ -6,11 +6,11 @@ HOSTNAMECTL=$(hostnamectl)
 echo "$HOSTNAMECTL"
 
 # Use machine ID from hostnamectl as unique identifier
-UID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F':' '{ print $2 }')
+UID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }')
 echo "Unique ID: $UID"
 
 # Pack hostnamectl values into JSON
-HOSTNAME_JSON="{$(echo "$HOSTNAMECTL" | awk -F':' '{ print "$1":"$2", }')}"
+HOSTNAME_JSON="{$(echo "$HOSTNAMECTL" | awk -F ':' '{ print "$1":"$2", }')}"
 
 echo "$HOSTNAME_JSON"
 
