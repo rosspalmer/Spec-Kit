@@ -4,15 +4,18 @@
 
 # Get `hostnamectl` values
 HOSTNAMECTL=$(hostnamectl)
-echo "$HOSTNAMECTL"
-
-# Use machine ID from hostnamectl as unique identifier
-UID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }' | xargs)
-echo "Unique ID: $UID"
+HOSTNAME=$(echo "$HOSTNAMECTL" | grep "hostname" | awk -F ':' '{ print $2 }' | xargs)
+ICON_NAME=$(echo "$HOSTNAMECTL" | grep "Icon name" | awk -F ':' '{ print $2 }' | xargs)
+MACHINE_ID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }' | xargs)
 
 # Pack hostnamectl values into JSON
-HOSTNAME_JSON="{$(echo "$HOSTNAMECTL" | awk -F ':' '{ print $1 $2h }')}"
+HOSTNAME_JSON=$(cat << EOF {
+  "hostname": "$HOSTNAME"
+}
+EOF
+)
 
+echo "hostnamectl Loaded"
 echo "$HOSTNAME_JSON"
 
 # Show shorten system information using `lshw` util
