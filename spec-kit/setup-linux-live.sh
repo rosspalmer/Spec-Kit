@@ -17,7 +17,7 @@ sed -i 's/\bLIVEKITNAME="linux"\b/LIVEKITNAME="spec-kit"/g'
 cp "$KIT_PATH/spec-kit-logo.png" /tmp/linux-live/bootfiles/bootlogo.png
 
 # Add persist setting for USB setup
-sed -i -E 's/\bAPPEND.+\b/& perch/g' /tmp/linux-live/bootfiles/
+sed -i -E 's/\bAPPEND.+\b/& perch/g' /tmp/linux-live/config
 
 # Run linux-live build script to create imagine
 sh /tmp/linux-live/build
