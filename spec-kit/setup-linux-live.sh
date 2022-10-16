@@ -7,7 +7,8 @@ KIT_PATH="$(dirname -- "$(readlink -f "${BASH_SOURCE}")")"
 
 # Clone linux live repo and move to `/tmp`
 git clone https://github.com/Tomas-M/linux-live.git
-mv -r ./linux-live /tmp/linux-live
+cp -r ./linux-live /tmp/linux-live
+rm -r ./linux-live
 
 # Modify name for generated image
 sed -i 's/\bLIVEKITNAME="linux"\b/LIVEKITNAME="spec-kit"/g'
