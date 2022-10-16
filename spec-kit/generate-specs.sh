@@ -8,21 +8,17 @@ HOSTNAME=$(echo "$HOSTNAMECTL" | grep "hostname" | awk -F ':' '{ print $2 }' | x
 ICON_NAME=$(echo "$HOSTNAMECTL" | grep "Icon name" | awk -F ':' '{ print $2 }' | xargs)
 MACHINE_ID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }' | xargs)
 
+# Provide short console output for user
+hostnamectl
+echo
 echo "===+=== hostnamectl loaded ===+==="
-echo
-echo "hostname -> $HOSTNAME"
-echo "icon_name -> $ICON_NAME"
-echo "machine_id -> $MACHINE_ID"
-echo
 
 # Get `lscpu` CPU specs in JSON format
 # TODO fix "fields/data" parsing problems
 LSCPU_JSON=$(lscpu -J)
 
 echo "===+=== lscpu loaded ===+==="
-echo
-lscpu
-echo
+
 
 # Get `lshw` in JSON format
 # FIXME remove outer list
