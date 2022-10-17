@@ -2,6 +2,11 @@
 
 # NOTE: Most be run with root permissions
 
+# Install requirements for linux-live setup
+apt-get install git
+apt-get install squashfs-tools
+apt-get install genisoimage
+
 # Get root path for spec-ket package
 KIT_PATH="$(dirname -- "$(readlink -f "${BASH_SOURCE}")")"
 
