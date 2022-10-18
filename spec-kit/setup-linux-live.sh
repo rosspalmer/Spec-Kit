@@ -8,7 +8,7 @@ apt-get install squashfs-tools
 apt-get install genisoimage
 
 # Get root path for spec-ket package
-KIT_PATH="$(dirname -- "$(readlink -f "${BASH_SOURCE}")")"
+KIT_PATH="$(dirname -- "$(realpath "${BASH_SOURCE:-$0}")")"
 
 # Clone linux live repo and move to `/tmp`
 git clone https://github.com/Tomas-M/linux-live.git
