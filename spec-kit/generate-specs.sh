@@ -15,7 +15,7 @@ echo "===+=== hostnamectl loaded ===+==="
 
 # Get `lscpu` CPU specs in JSON format
 LSCPU_STRING=$(lscpu -J)
-END_INDEX=$(${#LSCPU_STRING} - 1)
+END_INDEX=$(expr ${#LSCPU_STRING} - 1)
 LSCPU_JSON=$(echo "$LSCPU_STRING" | cut -c2-"$END_INDEX" | xargs)
 
 echo "===+=== lscpu loaded ===+==="
