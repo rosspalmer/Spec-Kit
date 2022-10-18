@@ -23,7 +23,9 @@ echo "===+=== lscpu loaded ===+==="
 
 # Get `lshw` in JSON format
 # FIXME remove outer list
-LSHW_JSON=$(lshw -json)
+LSHW_STRING=$(lshw -json)
+LSHW_END=$(expr ${#LSHW_STRING} - 1)
+LSHW_JSON=$(echo "$LSCPU_STRING" | cut -c2-"$LSHW_END")
 
 echo "===+=== lshw loaded ===+==="
 echo
@@ -44,9 +46,9 @@ OUTPUT_JSON=$(cat << EOF
   "cpu_model": "$CPU",
   "total_memory": "$TOTAL_MEMORY",
 
-  "$LSCPU_JSON",
+  $LSCPU_JSON,
 
-  "lshw": "$LSHW_JSON"
+  "lshw": $LSHW_JSON
 
 }
 EOF
