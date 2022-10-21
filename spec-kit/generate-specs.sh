@@ -6,7 +6,8 @@ OUTPUT_LOCATION=$1
 HOSTNAMECTL=$(hostnamectl)
 HOSTNAME=$(echo "$HOSTNAMECTL" | grep "hostname" | awk -F ':' '{ print $2 }' | xargs)
 ICON_NAME=$(echo "$HOSTNAMECTL" | grep "Icon name" | awk -F ':' '{ print $2 }' | xargs)
-MACHINE_ID=$(echo "$HOSTNAMECTL" | grep "Machine" | awk -F ':' '{ print $2 }' | xargs)
+
+SYSTEM_UUID=$(sudo cat /sys/class/dmi/id/product_uuid)
 
 # Provide short console output for user
 hostnamectl
@@ -23,13 +24,11 @@ echo "===+=== lscpu loaded ===+==="
 
 # Get `lshw` in JSON format
 # FIXME remove outer list
-LSHW_STRING=$(sudo lshw -json)
-LSHW_END=$(expr ${#LSHW_STRING} - 1)
-LSHW_JSON=$(echo "$LSHW_STRING" | cut -c2-"$LSHW_END")
+LSHW_JSON=$(sudo lshw -json)
 
 echo "===+=== lshw loaded ===+==="
 echo
-lshw -short
+sudo lshw -short
 echo
 
 # Get total memory using `free`
@@ -42,7 +41,7 @@ OUTPUT_JSON=$(cat << EOF
 
   "hostname": "$HOSTNAME",
   "icon_name": "$ICON_NAME",
-  "machine_id": "$MACHINE_ID",
+  "system_uuid": "$MACHINE_ID",
   "cpu_model": "$CPU",
   "total_memory": "$TOTAL_MEMORY",
 
@@ -54,12 +53,12 @@ OUTPUT_JSON=$(cat << EOF
 EOF
 )
 
-FILE_NAME="$OUTPUT_LOCATION/$MACHINE_ID"
+FILE_NAME="$OUTPUT_LOCATION/$SYSTEM_UUID"
 
 # Write json and html files
 echo "$OUTPUT_JSON" > "$FILE_NAME.json"
 lshw -html > "$FILE_NAME.html"
 
 echo "== SPEC-KIT COMPLETE =="
-echo "Machine Id: $MACHINE_ID"
+echo "System UUID: $SYSTEM_UUID"
 echo
