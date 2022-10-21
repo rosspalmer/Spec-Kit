@@ -59,3 +59,7 @@ FILE_NAME="$OUTPUT_LOCATION/$MACHINE_ID"
 # Write json and html files
 echo "$OUTPUT_JSON" > "$FILE_NAME.json"
 lshw -html > "$FILE_NAME.html"
+
+echo "== SPEC-KIT COMPLETE =="
+echo "Machine Id: $MACHINE_ID"
+echo
