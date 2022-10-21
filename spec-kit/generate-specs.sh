@@ -23,7 +23,7 @@ echo "===+=== lscpu loaded ===+==="
 
 # Get `lshw` in JSON format
 # FIXME remove outer list
-LSHW_STRING=$(lshw -json)
+LSHW_STRING=$(sudo lshw -json)
 LSHW_END=$(expr ${#LSHW_STRING} - 1)
 LSHW_JSON=$(echo "$LSCPU_STRING" | cut -c2-"$LSHW_END")
 
