@@ -20,5 +20,7 @@ sudo dmidecode -t system > "${HARDWARE_FOLDER}/${HARDWARE_KEY}_dmidecode_system.
 
 # Zip all data files in generated folder into single 
 # compressed file with HARDWARE_KEY input as file name 
-zip -r $HARDWARE_FOLDER.zip $HARWARE_FOLDER/
+zip -r $HARDWARE_FOLDER.zip $HARDWARE_FOLDER/
 
+# Remove folder of now zipped data
+rm -r $HARDWARE_FOLDER
