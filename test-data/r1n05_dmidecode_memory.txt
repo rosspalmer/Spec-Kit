@@ -1,0 +1,260 @@
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.7 present.
+
+Handle 0x003B, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: Multi-bit ECC
+	Maximum Capacity: 128 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 8
+
+Handle 0x003D, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 8 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMA1
+	Bank Locator: P0_Node0_Channel0_Dimm0
+	Type: DDR3
+	Type Detail: Registered (Buffered)
+	Speed: 1866 MT/s
+	Manufacturer: Samsung                       
+	Serial Number: 121EA7E4    
+	Asset Tag: Dimm0_AssetTag
+	Part Number: M393B1G73QH0-CMA  
+	Rank: 2
+	Configured Memory Speed: 1866 MT/s
+
+Handle 0x003F, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMA2
+	Bank Locator: P0_Node0_Channel0_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0041, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMB1
+	Bank Locator: P0_Node0_Channel1_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0043, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMB2
+	Bank Locator: P0_Node0_Channel1_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0045, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMC1
+	Bank Locator: P0_Node0_Channel2_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0047, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMC2
+	Bank Locator: P0_Node0_Channel2_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0049, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMD1
+	Bank Locator: P0_Node0_Channel3_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x004B, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x003B
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P1-DIMMD2
+	Bank Locator: P0_Node0_Channel3_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x004D, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: Multi-bit ECC
+	Maximum Capacity: 128 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 8
+
+Handle 0x004F, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: 8 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMME1
+	Bank Locator: P1_Node1_Channel0_Dimm0
+	Type: DDR3
+	Type Detail: Registered (Buffered)
+	Speed: 1866 MT/s
+	Manufacturer: Samsung                       
+	Serial Number: 121EA7DB    
+	Asset Tag: Dimm0_AssetTag
+	Part Number: M393B1G73QH0-CMA  
+	Rank: 2
+	Configured Memory Speed: 1866 MT/s
+
+Handle 0x0051, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMME2
+	Bank Locator: P1_Node1_Channel0_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0053, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMF1
+	Bank Locator: P1_Node1_Channel1_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0055, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMF2
+	Bank Locator: P1_Node1_Channel1_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0057, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMG1
+	Bank Locator: P1_Node1_Channel2_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x0059, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMG2
+	Bank Locator: P1_Node1_Channel2_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x005B, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMH1
+	Bank Locator: P1_Node1_Channel3_Dimm0
+	Type: Unknown
+	Type Detail: Synchronous
+
+Handle 0x005D, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x004D
+	Error Information Handle: Not Provided
+	Total Width: 72 bits
+	Data Width: 64 bits
+	Size: No Module Installed
+	Form Factor: DIMM
+	Set: None
+	Locator: P2-DIMMH2
+	Bank Locator: P1_Node1_Channel3_Dimm1
+	Type: Unknown
+	Type Detail: Synchronous
+
