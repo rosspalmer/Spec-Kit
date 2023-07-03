@@ -2,7 +2,6 @@
 from data_model import CPU, RAM
 
 from json import load
-import os
 import re
 from typing import List
 from zipfile import ZipFile
@@ -22,13 +21,20 @@ class SpecZipFile:
             self.rams: List[RAM] = self.read_memory_file(f"{file_root}_dmidecode_memory.txt")
 
     def read_cpu_file(self, file_name: str) -> CPU:
+
         with self.zip.open(file_name) as cpu_file:
             cpu_data = load(cpu_file)['lscpu']
             cpu_dict = dict(map(lambda x: (x['field'][:-1], x['data']), cpu_data))
 
-            return CPU(self.unit_id, cpu_dict['Model name'], cpu_dict['CPU(s)'],
-                       cpu_dict['Core(s) per socket'], cpu_dict['Socket(s)'],
-                       cpu_dict['CPU max MHz'], cpu_dict['CPU min MHz'])
+            return CPU(
+                unit_id=self.unit_id,
+                model_name=cpu_dict['Model name'],
+                total_cpu_count=cpu_dict['CPU(s)'],
+                cores_per_socket=cpu_dict['Core(s) per socket'],
+                sockets=cpu_dict['Socket(s)'],
+                max_mhz=cpu_dict['CPU max MHz'],
+                min_mhz=cpu_dict['CPU min MHz']
+            )
 
     def read_memory_file(self, file_path: str) -> List[RAM]:
 
@@ -61,6 +67,19 @@ class SpecZipFile:
 
         only_installed = filter(lambda x: 'Array Handle' in x and x['Size'] != 'No Module Installed', ram_data)
 
-        ram = map(lambda x: RAM(self.unit_id, x['Handle'], x['Size'], x['Speed'], x['Form Factor'], x['Type']), only_installed)
+        ram = map(lambda x: RAM(
+            unit_id=self.unit_id,
+            array_handle="FIXME",
+            ram_handle=x['Handle'],
+            size_gb=self.parse_size_string(x['Size']),
+            speed=x['Speed'],
+            form_factor=x['Form Factor'],
+            ram_type=x['Type']
+        ), only_installed)
 
         return list(ram)
+
+    @staticmethod
+    def parse_size_string(size: str) -> float:
+        pass  # FIXME
+

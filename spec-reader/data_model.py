@@ -1,26 +1,37 @@
 
 from typing import List
 
-
-class CPU:
-
-    def __init__(self, unit_id: str, model_name: str, total_cpu_count: str, cores_per_socket: str,
-                 sockets: str, max_mhz: float, min_mhz: float):
-        self.unit_id = unit_id
-        self.model_name = model_name
-        self.total_cpu_count = total_cpu_count
-        self.cores_per_socket = cores_per_socket
-        self.sockets = sockets
-        self.max_mhz = max_mhz
-        self.min_mhz = min_mhz
+from sqlalchemy import String
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
 
 
-class RAM:
+class SqlBase(DeclarativeBase):
+    pass
 
-    def __init__(self, unit_id: str, handle: str, size: str, speed: str, form_factor: str, ram_type: str):
-        self.unit_id = unit_id
-        self.handle = handle
-        self.size = size
-        self.speed = speed
-        self.form_factor = form_factor
-        self.ram_type = ram_type
+
+class CPU(SqlBase):
+
+    __tablename__ = "cpu"
+
+    unit_id: Mapped[str] = mapped_column(primary_key=True)
+    model_name: Mapped[str]
+    total_cpu_count: Mapped[int]
+    cores_per_socket: Mapped[int]
+    sockets: Mapped[int]
+    max_mhz: Mapped[float]
+    min_mhz: Mapped[float]
+
+
+class RAM(SqlBase):
+
+    __tablename__ = "ram"
+
+    unit_id: Mapped[str] = mapped_column(primary_key=True)
+    array_handle: Mapped[str] = mapped_column(primary_key=True)
+    ram_handle: Mapped[str] = mapped_column(primary_key=True)
+    size_gb: Mapped[str]  # FIXME need to convert to float
+    speed: Mapped[float]
+    form_factor: Mapped[str]
+    ram_type: Mapped[str]
