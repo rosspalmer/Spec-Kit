@@ -18,16 +18,9 @@ class CPU:
 class RAM:
 
     def __init__(self, unit_id: str, handle: str, size: str, speed: str, form_factor: str, ram_type: str):
+        self.unit_id = unit_id
         self.handle = handle
         self.size = size
         self.speed = speed
         self.form_factor = form_factor
         self.ram_type = ram_type
-
-
-class HardwareSpec:
-
-    def __init__(self, unit_id: str, cpu: CPU, ram: List[RAM]):
-        self.unit_id = unit_id
-        self.cpu = cpu
-        self.ram = ram
