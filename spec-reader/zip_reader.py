@@ -70,7 +70,7 @@ class SpecZipFile:
 
         ram = map(lambda x: RAM(
             unit_id=self.unit_id,
-            array_handle="FIXME",
+            array_handle=x['Array Handle'],
             ram_handle=x['Handle'],
             size_mb=self.parse_size_string(x['Size']),
             speed_mts=self.parse_speed_string(x['Speed']),
@@ -110,8 +110,8 @@ def read_folder(folder_path: str) -> List[SpecZipFile]:
 
     spec_zips = []
 
-    for filename in os.scandir():
+    for filename in os.scandir(folder_path):
         if filename.is_file() and filename.name.endswith('.zip'):
-            spec_zips += SpecZipFile(filename.path)
+            spec_zips.append(SpecZipFile(filename.path))
 
     return spec_zips

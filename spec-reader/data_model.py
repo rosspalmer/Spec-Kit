@@ -31,7 +31,7 @@ class RAM(SqlBase):
     unit_id: Mapped[str] = mapped_column(primary_key=True)
     array_handle: Mapped[str] = mapped_column(primary_key=True)
     ram_handle: Mapped[str] = mapped_column(primary_key=True)
-    size_gb: Mapped[str]  # FIXME need to convert to float
-    speed: Mapped[float]
+    size_mb: Mapped[int]
+    speed_mts: Mapped[int]
     form_factor: Mapped[str]
     ram_type: Mapped[str]

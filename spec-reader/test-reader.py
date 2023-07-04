@@ -1,7 +1,5 @@
 
-from zip_reader import SpecZipFile
+from sql_writer import SqlWriter
 
-example2 = SpecZipFile("/home/ross/repo/Spec-Kit/test-data/r4n20.zip")
-
-print(example2.cpu)
-print(example2.rams)
+sql = SqlWriter("/home/ross/server-db/server.db")
+sql.add_folder("/home/ross/server-db/server-db")

@@ -1,3 +1,5 @@
+import os.path
+import sqlite3
 
 from data_model import SqlBase
 from zip_reader import read_folder
@@ -9,7 +11,12 @@ from sqlalchemy.orm import Session
 class SqlWriter:
 
     def __init__(self, sqlite_path: str):
-        self.engine = create_engine(f"sqlite://{sqlite_path}")
+
+        if not os.path.exists(sqlite_path):
+            con = sqlite3.connect(sqlite_path)
+            con.close()
+
+        self.engine = create_engine(f"sqlite:///{sqlite_path}")
         SqlBase.metadata.create_all(self.engine, checkfirst=True)
 
     def add_folder(self, folder_path: str):
