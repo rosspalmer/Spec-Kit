@@ -1,5 +1,5 @@
 
-from spec_zip import SpecZipFile
+from zip_reader import SpecZipFile
 
 example2 = SpecZipFile("/home/ross/repo/Spec-Kit/test-data/r4n20.zip")
 

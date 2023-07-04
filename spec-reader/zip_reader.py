@@ -1,3 +1,4 @@
+import os
 
 from data_model import CPU, RAM
 
@@ -71,8 +72,8 @@ class SpecZipFile:
             unit_id=self.unit_id,
             array_handle="FIXME",
             ram_handle=x['Handle'],
-            size_gb=self.parse_size_string(x['Size']),
-            speed=x['Speed'],
+            size_mb=self.parse_size_string(x['Size']),
+            speed_mts=self.parse_speed_string(x['Speed']),
             form_factor=x['Form Factor'],
             ram_type=x['Type']
         ), only_installed)
@@ -80,6 +81,37 @@ class SpecZipFile:
         return list(ram)
 
     @staticmethod
-    def parse_size_string(size: str) -> float:
-        pass  # FIXME
+    def parse_size_string(size: str) -> int:
 
+        match = re.search("^(\\d+) (GB|MB)$", size)
+        if match is None:
+            raise Exception(f"Size string {size} is not supported")
+        else:
+
+            value = int(match.group(1))
+            unit = match.group(2)
+
+            if unit == "MB":
+                return value
+            elif unit == "GB":
+                return 1000 * value
+
+    @staticmethod
+    def parse_speed_string(speed: str) -> int:
+
+        match = re.search("^(\\d+) MT/s$", speed)
+        if match is None:
+            raise Exception(f"Speed string {speed} is not supported")
+        else:
+            return int(match.group(1))
+
+
+def read_folder(folder_path: str) -> List[SpecZipFile]:
+
+    spec_zips = []
+
+    for filename in os.scandir():
+        if filename.is_file() and filename.name.endswith('.zip'):
+            spec_zips += SpecZipFile(filename.path)
+
+    return spec_zips
