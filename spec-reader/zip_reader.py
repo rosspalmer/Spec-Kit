@@ -74,6 +74,8 @@ class SpecZipFile:
             array_handle=x['Array Handle'],
             ram_handle=x['Handle'],
             part_id=-1,
+            manufacturer=x['Manufacturer'],
+            part_number=x['Part Number'],
             size_mb=self.parse_size_string(x['Size']),
             speed_mts=self.parse_speed_string(x['Speed']),
             form_factor=x['Form Factor'],
