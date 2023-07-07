@@ -1,6 +1,7 @@
 # Spec-Kit
-Linux based shell script library for analyzing hardware. Common unix 
-CLI tools are used to pull hardware information to be saved as structured 
+
+Simple library for analyzing hardware using common :inux CLI tools to 
+pull hardware information to be saved as structured 
 text files. These files are archived into zip files with the specified 
 computer ID as the file name.
 
@@ -31,8 +32,8 @@ https://www.redhat.com/sysadmin/linux-system-info-commands
 
 ## Creating USB Tool
 
-The benefit of the Spec-Kit tool is limited if only ulitized on a single machine,
-the true purpose of this tool is for use anayzling a large block of unknown
+The benefit of the Spec-Kit tool is limited if only utilized on a single machine,
+the true purpose of this tool is for use analyzing a large block of unknown
 computers. One method to achieve this is to build a bootable / persistable USB
 thumbdrive which can used to easily gather specs from many machines.
 

@@ -29,7 +29,7 @@ class CPUParts(SqlBase):
 
     __tablename__ = "cpu_parts"
 
-    part_id: Mapped[int] = mapped_column(autoincrement=True)
+    part_id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
     model_name: Mapped[str]
 
 
@@ -53,3 +53,6 @@ class RAMPart(SqlBase):
 
     __tablename__ = "ram_parts"
 
+    part_id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
+    manufacturer: Mapped[str]
+    part_number: Mapped[str]

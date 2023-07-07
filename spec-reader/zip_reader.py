@@ -1,8 +1,8 @@
-import os
 
 from data_model import CPU, RAM
 
 from json import load
+import os
 import re
 from typing import List
 from zipfile import ZipFile
@@ -29,6 +29,7 @@ class SpecZipFile:
 
             return CPU(
                 unit_id=self.unit_id,
+                part_id=-1,
                 model_name=cpu_dict['Model name'],
                 total_cpu_count=cpu_dict['CPU(s)'],
                 cores_per_socket=cpu_dict['Core(s) per socket'],
@@ -72,6 +73,7 @@ class SpecZipFile:
             unit_id=self.unit_id,
             array_handle=x['Array Handle'],
             ram_handle=x['Handle'],
+            part_id=-1,
             size_mb=self.parse_size_string(x['Size']),
             speed_mts=self.parse_speed_string(x['Speed']),
             form_factor=x['Form Factor'],
