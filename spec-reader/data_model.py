@@ -11,6 +11,15 @@ class SqlBase(DeclarativeBase):
     pass
 
 
+# class Motherboard(SqlBase):
+#
+#     __tablename__ = "motherboard"
+#
+#     unit_id: Mapped[str] = mapped_column(primary_key=True)
+#     part_id: Mapped[int]
+#
+#
+
 class CPU(SqlBase):
 
     __tablename__ = "cpu"
@@ -56,3 +65,18 @@ class RAMPart(SqlBase):
     part_id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
     manufacturer: Mapped[str]
     part_number: Mapped[str]
+
+
+class Offers(SqlBase):
+
+    __tablename__ = "offers"
+
+    offer_id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
+    part_table: Mapped[str]
+    part_id: Mapped[int]
+    offer_type: Mapped[str]
+    offer_name: Mapped[str]
+    vendor: Mapped[str]
+    offer_price: Mapped[float]
+    offer_notes: Mapped[str]
+    offer_link: Mapped[str]
