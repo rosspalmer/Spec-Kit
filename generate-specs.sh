@@ -15,7 +15,7 @@ cd $HARDWARE_FOLDER
 sudo lscpu --json > "${HARDWARE_KEY}_lscpu.json"
 sudo lsblk --json > "${HARDWARE_KEY}_lsblk.json"
 sudo lspci -vm > "${HARDWARE_KEY}_lspci.txt"
-sudo dmidecode -t baseboard > ""
+sudo dmidecode -t baseboard > "${HARDWARE_KEY}_dmidecode_baseboard.txt"
 sudo dmidecode -t memory > "${HARDWARE_KEY}_dmidecode_memory.txt"
 sudo dmidecode -t bios > "${HARDWARE_KEY}_dmidecode_bios.txt"
 sudo dmidecode -t system > "${HARDWARE_KEY}_dmidecode_system.txt"
